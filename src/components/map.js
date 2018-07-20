@@ -2,18 +2,40 @@ import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedPlace: { name: 'hello' }
+    }
+  }
+
+  mapClicked(mapProps, map, clickEvent) {
+    const { google } = mapProps
+    const service = new google.maps.places.PlacesService(map);
+
+    service.nearbySearch({
+      location: { lat: 39.7392, lng: -104.9903 },
+      radius: 50,
+      keyword: ['restaurants']
+    }, result => console.log(result))
+  }
+
   render() {
+    const location = {
+      lat: 39.7392,
+      lng: -104.9903
+    }
+
     return (
-      <Map
-        google={this.props.google}
-        initialCenter={{
-          lat: 41.504539,
-          lng: -81.613350
-        }}
-        zoom={12}
-      >
-      </Map>
-    );
+      <div>
+        <Map google={this.props.google}
+          initialCenter={location}
+          onClick={this.mapClicked} />
+
+        <Marker onClick={this.onMarkerClick}
+          name={'Current location'} />
+      </div>
+    )
   }
 }
 
