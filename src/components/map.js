@@ -5,35 +5,46 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedPlace: { name: 'hello' }
+      selectedPlaces: [],
     }
+
   }
 
-  mapClicked(mapProps, map, clickEvent) {
-    const { google } = mapProps
-    const service = new google.maps.places.PlacesService(map);
+  // nearbyPlaces = (props, map, clickEvent) => {
+  //   const { google } = props
+  //   const service = new google.maps.places.PlacesService(map);
 
-    service.nearbySearch({
-      location: { lat: 39.7392, lng: -104.9903 },
-      radius: 50,
-      keyword: ['restaurants']
-    }, result => console.log(result))
-  }
+  //   service.nearbySearch({
+  //     location: this.props.position,
+  //     radius: 500,
+  //     keyword: ['food']
+  //   }, result => this.setState({ selectedPlaces: result })
+  //   )
+  // }      switch this method to get nearby places from yelp then render markers with yelp lat and lng!!!!
+
+
+
 
   render() {
-    const location = {
-      lat: 39.7392,
-      lng: -104.9903
-    }
+    const location = this.props.position;
+    // const markers = this.state.selectedPlaces.map(restaurant => {
+    //   console.log(restaurant)
+    //   return (
+    //     <Marker
+    //       position={{ lat: 80, lng: -141 }}
+    //     />
+    //   )
+    // })
 
     return (
       <div>
-        <Map google={this.props.google}
+        <Map
+          google={this.props.google}
           initialCenter={location}
-          onClick={this.mapClicked} />
-
-        <Marker onClick={this.onMarkerClick}
-          name={'Current location'} />
+          onReady={this.nearbyPlaces}
+        >
+          <Marker position={this.props.position} />
+        </Map>
       </div>
     )
   }
