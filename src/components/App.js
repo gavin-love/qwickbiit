@@ -4,6 +4,7 @@ import './App.css';
 import Footer from '../components/mainFooter';
 import MapContainer from '../components/map';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,7 @@ class App extends Component {
 
     const options = {
       enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: 8000,
       maximumAge: 0
     };
 
