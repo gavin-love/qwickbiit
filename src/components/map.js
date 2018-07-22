@@ -16,8 +16,6 @@ export class MapContainer extends Component {
 
     let restaurants;
 
-    let yelpApiKey = 'Dy1whqeBla6eVA7q4irOM-bi8QNVgda5nwcAuhJHkSdhJogs1AqY_Qgs78YrfJITrQ99tbzSQpLZ7kT6ndXN_Iw4-Q-oKr9dxXqC2ihe7cqWwDAsWbY_yGxbixdRW3Yx'
-
     const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
     const prefix = `${corsAnywhereUrl}https://api.yelp.com/v3/businesses/search?`;
@@ -88,5 +86,4 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCY43ng22LgVeBO4LISUvcF7nbMRTaDYPs'
 })(MapContainer)
