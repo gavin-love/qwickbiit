@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from '../src/components/App';
-import registerServiceWorker from './registerServiceWorker';
-import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import reducers from './reducers';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./components/App";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+import { BrowserRouter } from "react-router-dom";
 
-// let store = createStore(reducers, applyMiddleware(thunk));
+const devTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const store = createStore(rootReducer, devTools);
 
-ReactDOM.render(
-  // <Provider store={store}>
-  <App />, document.getElementById('root'));
-
-registerServiceWorker();
+const router = (
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+);
+ReactDOM.render(router, document.getElementById("root"));
