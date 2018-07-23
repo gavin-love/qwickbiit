@@ -17,11 +17,16 @@ class Main extends Component {
     }
 
     const markers = this.props.restaurants.map((restaurant, index) => {
+
       const { latitude, longitude, name } = restaurant.coordinates;
+
+      const center = {
+        lat: latitude,
+        lng: longitude
+      }
       return (
         <Marker
-          lat={latitude}
-          lng={longitude}
+          position={center}
           key={index}
           name={name}
         />
@@ -46,8 +51,7 @@ export const mapStateToProps = state => ({
   restaurants: state.restaurants
 });
 
-const googleWrapper = GoogleApiWrapper({
-})(Main)
+
 
 export default connect(mapStateToProps, null)(googleWrapper)
 
