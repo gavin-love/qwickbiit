@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
-import Header from './mainHeader'
 import './App.css';
-import Footer from './mainFooter';
 import Login from './login';
-import GoogleMap from './googleMap';
+import Main from './main';
 import locationAction from '../actions/locationAction';
 import errorAction from '../actions/errorAction';
-// import { nearbyRestaurants } from './nearbyRestaurants';
+
 
 
 class App extends Component {
@@ -48,9 +46,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
         <Login />
-        <Footer />
+        {this.props.location.lat && this.props.restaurants.length > 0 && <Main />}
       </div>
     );
   }
@@ -62,7 +59,8 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export const mapStateToProps = state => ({
-  location: state.location
+  location: state.location,
+  restaurants: state.restaurants
 });
 
 export default withRouter(

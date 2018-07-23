@@ -9,7 +9,6 @@ export class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      restaurants: []
     };
   }
 
@@ -26,10 +25,7 @@ export class Login extends Component {
     // this.props.handleLogin(user);
     const { lat, lng } = this.props.location
     let restaurants = await nearbyRestaurants(lat, lng);
-    this.setState({
-      restaurants
-    })
-    this.props.handleRestaurants(this.state.restaurants)
+    this.props.handleRestaurants(restaurants)
   };
 
   render() {

@@ -1,5 +1,7 @@
 export const nearbyRestaurants = async (latitude, longitude) => {
+
   let restaurants;
+
   let yelpApiKey = 'Dy1whqeBla6eVA7q4irOM-bi8QNVgda5nwcAuhJHkSdhJogs1AqY_Qgs78YrfJITrQ99tbzSQpLZ7kT6ndXN_Iw4-Q-oKr9dxXqC2ihe7cqWwDAsWbY_yGxbixdRW3Yx'
 
   const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
@@ -14,8 +16,6 @@ export const nearbyRestaurants = async (latitude, longitude) => {
   const sort = 'sort_by=rating';
   const open = 'open_now=true';
   const reservation = ''
-
-  console.log(`${prefix}${lat}&${long}&${term}&${price}&${limit}&${radius}&${open}&${reservation}&${sort}`)
 
   let headers = new Headers();
   headers.append("Authorization", "Bearer " + yelpApiKey);

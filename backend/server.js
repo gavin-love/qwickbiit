@@ -17,6 +17,9 @@ app.get('/api/v1/users', (request, response) => {
 
 app.post('/api/v1/users/new', (request, response) => {
   const user = request.query;
+
+  console.log(user)
+
   for (let requiredParameter of ['username', 'email', 'password']) {
     if (!user[requiredParameter]) {
       return response
