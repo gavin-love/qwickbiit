@@ -1,44 +1,44 @@
 import React, { Component } from 'react';
-import Header from '../components/mainHeader'
+import { connect } from "react-redux";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import './App.css';
-import Footer from '../components/mainFooter';
-import MapContainer from '../components/map';
+import Login from './login';
+import Main from './main';
+import locationAction from '../actions/locationAction';
+import errorAction from '../actions/errorAction';
+
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = ({
-      currentPosition: {}
-    })
+
   }
 
   componentDidMount() {
     this.getLocation();
   }
 
+
   getLocation = () => {
 
     const options = {
       enableHighAccuracy: true,
-      timeout: 8000,
+      timeout: 10000,
       maximumAge: 0
     };
 
     const success = (pos) => {
       let position = pos.coords;
 
-      let currentLocation = {
+      let location = {
         lat: position.latitude,
         lng: position.longitude
       }
-
-      this.setState({
-        currentPosition: currentLocation
-      })
+      this.props.handleLocation(location)
     };
 
-    const error = (err) => console.warn(`ERROR(${err.code}): ${err.message}`);
+    const error = (err) => this.props.handleError(err)
 
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
@@ -46,12 +46,26 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <MapContainer position={this.state.currentPosition} />
-        <Footer />
+        <Login />
+        {this.props.location.lat && this.props.restaurants.length > 0 && <Main />}
       </div>
     );
   }
 }
 
-export default App;
+export const mapDispatchToProps = dispatch => ({
+  handleLocation: location => dispatch(locationAction(location)),
+  handleError: err => dispatch(errorAction(err))
+});
+
+export const mapStateToProps = state => ({
+  location: state.location,
+  restaurants: state.restaurants
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
