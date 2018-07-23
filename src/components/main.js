@@ -47,7 +47,6 @@ export const mapStateToProps = state => ({
 });
 
 const googleWrapper = GoogleApiWrapper({
-  apiKey: 'AIzaSyCY43ng22LgVeBO4LISUvcF7nbMRTaDYPs'
 })(Main)
 
 export default connect(mapStateToProps, null)(googleWrapper)
