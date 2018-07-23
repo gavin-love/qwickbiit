@@ -6,6 +6,8 @@ import Login from './login';
 import Main from './main';
 import locationAction from '../actions/locationAction';
 import errorAction from '../actions/errorAction';
+import restaurantsAction from '../actions/restaurantsAction';
+import nearbyRestaurants from './nearbyRestaurants';
 
 
 
@@ -19,16 +21,15 @@ class App extends Component {
     this.getLocation();
   }
 
-
   getLocation = () => {
 
     const options = {
       enableHighAccuracy: true,
-      timeout: 10000,
+      timeout: 5000,
       maximumAge: 0
     };
 
-    const success = (pos) => {
+    const success = async (pos) => {
       let position = pos.coords;
 
       let location = {
@@ -36,6 +37,8 @@ class App extends Component {
         lng: position.longitude
       }
       this.props.handleLocation(location)
+      let restaurants = await nearbyRestaurants(location);
+      this.props.handleRestaurants(restaurants)
     };
 
     const error = (err) => this.props.handleError(err)
@@ -46,7 +49,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login />
         {this.props.location.lat && this.props.restaurants.length > 0 && <Main />}
       </div>
     );
@@ -55,7 +57,8 @@ class App extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   handleLocation: location => dispatch(locationAction(location)),
-  handleError: err => dispatch(errorAction(err))
+  handleError: err => dispatch(errorAction(err)),
+  handleRestaurants: restaurants => dispatch(restaurantsAction(restaurants))
 });
 
 export const mapStateToProps = state => ({

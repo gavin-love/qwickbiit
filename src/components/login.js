@@ -23,14 +23,11 @@ export class Login extends Component {
     event.preventDefault();
     //const user = findUser(this.state)
     // this.props.handleLogin(user);
-    const { lat, lng } = this.props.location
-    let restaurants = await nearbyRestaurants(lat, lng);
-    this.props.handleRestaurants(restaurants)
   };
 
   render() {
     return (
-      <form className="log_in" onSubmit={this.handleSubmit}>
+      <form className="log_in" >
         <h5 className="login_title">Account Login</h5>
 
         <input
