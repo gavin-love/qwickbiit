@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <Landing />
-        {this.props.restaurantDetails && <Details />}
+        {this.props.restaurantDetails.id && <Details />}
         {this.props.location.lat && this.props.restaurants.length > 0 && <Main />}
       </div>
     );
@@ -25,7 +25,8 @@ class App extends Component {
 
 export const mapStateToProps = state => ({
   location: state.location,
-  restaurants: state.restaurants
+  restaurants: state.restaurants,
+  restaurantDetails: state.restaurantDetails
 });
 
 export default withRouter(

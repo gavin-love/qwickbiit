@@ -8,14 +8,13 @@ class Details extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { lat, lng } = this.props.location
 
     const userLocation = {
       lat,
       lng
     }
-
+    console.log(userLocation)
     const { id, name, rating, location, price, transactions, display_phone, distance, review_count, image_url, coordinates } = this.props.restaurantDetails
 
     return (
