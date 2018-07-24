@@ -5,5 +5,3 @@ export const restaurantsAction = (restaurants) => {
     restaurants: restaurants
   };
 };
-
-export default restaurantsAction

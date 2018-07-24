@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import detailsContainer from './detailsContainer';
-import testMessage from './testMessage';
+import { detailsAction } from '../actions/detailsAction';
 
 class Main extends Component {
   constructor(props) {
     super(props);
+  }
+
+  getRestaurantDetails = async (id) => {
+    const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === id)
+    this.props.handleDetails(restaurant)
   }
 
   render() {
@@ -35,15 +39,14 @@ class Main extends Component {
     });
 
     const restaurantTabs = this.props.restaurants.map((restaurant, index) => {
-      const { name, rating, location, phone, price, transactions, display_phone, distance, review_count, image_url } = restaurant
-      //location.display_address
+      const { id, name, rating, location, phone, price, transactions, display_phone, distance, review_count, image_url } = restaurant
 
       const miles = (distance * 0.000621371).toFixed(2)
-
       return (
         <li
           key={index}
-          onClick={() => detailsContainer(index)}
+          id={id}
+          onClick={() => this.getRestaurantDetails(id)}
         >
           <img src={image_url} />
           <h1>{name}</h1>
@@ -78,11 +81,15 @@ export const mapStateToProps = state => ({
   restaurants: state.restaurants
 });
 
+const mapDispatchToProps = dispatch => ({
+  handleDetails: (restaurant) => dispatch(detailsAction(restaurant))
+})
+
 const googleWrapper = GoogleApiWrapper({
   apiKey: 'AIzaSyCY43ng22LgVeBO4LISUvcF7nbMRTaDYPs'
 })(Main)
 
-export default connect(mapStateToProps, null)(googleWrapper)
+export default connect(mapStateToProps, mapDispatchToProps)(googleWrapper)
 
 
 

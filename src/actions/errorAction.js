@@ -4,5 +4,3 @@ export const errorAction = ({ message }) => {
     error: message
   };
 };
-
-export default errorAction

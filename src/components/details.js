@@ -8,36 +8,37 @@ class Details extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { lat, lng } = this.props.location
 
-    const location = {
+    const userLocation = {
       lat,
       lng
     }
 
-    const restaurantTabs = this.props.restaurants.find((restaurant, index) => {
-      const { name, rating, location, phone, price, transactions, display_phone, distance, review_count, image_url } = restaurant
-      //location.display_address
-
-      const miles = (distance * 0.000621371).toFixed(2)
-
-      return (
-        <div>what?</div>
-      )
-    })
+    const { id, name, rating, location, price, transactions, display_phone, distance, review_count, image_url, coordinates } = this.props.restaurantDetails
 
     return (
-      <div className="Details_view">
-        <div className="Details_view_header">
+      <div className="detail_view">
+        <div className="detail_view_header">
+          <img src={image_url} />
+        </div>
+        <div className="detail_view_body">
+          <h1>{name}</h1>
+          <p>{rating}</p>
+          <p>{location.display_address}</p>
+          <p>{price}</p>
+          <p>{transactions}</p>
+          <p>{display_phone}</p>
+          <p>{distance}</p>
           <Map
             google={this.props.google}
-            initialCenter={location}
+            initialCenter={userLocation}
           >
+            <Marker position={userLocation} />
+            <Marker position={coordinates} />
           </Map>
         </div>
-        <ul className="Details_view_body">
-          {restaurantTabs}
-        </ul>
       </div>
     )
   }
@@ -45,7 +46,8 @@ class Details extends Component {
 
 export const mapStateToProps = state => ({
   location: state.location,
-  restaurants: state.restaurants
+  restaurants: state.restaurants,
+  details: state.restaurantDetails
 });
 
 const googleWrapper = GoogleApiWrapper({

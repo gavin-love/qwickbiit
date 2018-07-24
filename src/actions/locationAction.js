@@ -8,4 +8,3 @@ export const locationAction = ({ lat, lng }) => {
   };
 };
 
-export default locationAction

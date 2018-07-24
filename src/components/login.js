@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import nearbyRestaurants from './nearbyRestaurants';
-import restaurantsAction from '../actions/restaurantsAction';
+import { restaurantsAction } from '../actions/restaurantsAction';
 
 export class Login extends Component {
   constructor() {
@@ -52,16 +52,6 @@ export class Login extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  // handleLogin: user => dispatch(loginAction(user)),
-  handleRestaurants: restaurants => dispatch(restaurantsAction(restaurants))
-});
 
-export const mapStateToProps = state => ({
-  location: state.location
-})
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default Login;
