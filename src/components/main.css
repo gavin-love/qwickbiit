@@ -1,0 +1,34 @@
+.main_view_body {
+  padding: 0;
+}
+
+.list_items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid blue;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.list_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+}
+
+.list_items_details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.list_items_title {
+  margin: 10px;
+}
+.main_images {
+  height: 150px;
+  width: 200px
+}

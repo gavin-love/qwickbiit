@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { detailsAction } from '../actions/detailsAction';
+import './main.css';
 
 class Main extends Component {
   constructor(props) {
@@ -45,23 +46,39 @@ class Main extends Component {
       const miles = (distance * 0.000621371).toFixed(2)
       return (
         <li
+          className="list_items"
           key={index}
           id={id}
           onClick={() => this.getRestaurantDetails(id)}
         >
-          <img src={image_url} />
-          <h1>{name}</h1>
-          <p>Rating: {rating}</p>
-          <p>Price Range: {price}</p>
-          <p>Distance: {miles} miles</p>
+          <img className="main_images"
+            src={image_url}
+          />
+          <div className="list_info">
+            <h1
+              className="list_items_title"
+            >{name}</h1>
+            <div className="list_items_details">
+              <p>Rating: {rating}</p>
+              <p>Price Range: {price}</p>
+              <p>Distance: {miles} miles</p>
+            </div>
+          </div>
         </li>
       )
     })
+
+    const style = {
+      width: '100%',
+      height: '70%'
+    }
 
     return (
       <div className="main_view">
         <div className="main_view_header">
           <Map
+            style={style}
+            zoom={14}
             google={this.props.google}
             initialCenter={location}
           >

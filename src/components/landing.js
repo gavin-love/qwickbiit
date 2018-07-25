@@ -6,6 +6,8 @@ import { errorAction } from '../actions/errorAction';
 import { restaurantsAction } from '../actions/restaurantsAction';
 import nearbyRestaurants from './nearbyRestaurants';
 import { withRouter } from 'react-router-dom';
+import logo from '../assets/qb-logo.png';
+import './landing.css';
 
 class Landing extends Component {
   constructor(props) {
@@ -80,6 +82,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
+        <img className="qb_logo" src={logo} />
         <form className="landing_form" onSubmit={this.handleZipCode} >
           <input
             className="landing_zipcode"
@@ -89,12 +92,12 @@ class Landing extends Component {
             placeholder="Enter zip-code"
             onChange={this.handleChange}
           />
-          <button className="submit_zipcode">Submit</button>
+          <button className="submit_zipcode">find</button>
         </form>
         <form className="current_location" onSubmit={this.handleCurrentLocation}>
-          <button className="submit_current_location">Use Current Location</button>
+          <button className="submit_current_location"> current location</button>
         </form>
-      </div>
+      </div >
     );
   }
 }

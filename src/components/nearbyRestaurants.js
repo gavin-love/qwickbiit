@@ -12,7 +12,7 @@ export const nearbyRestaurants = async (location) => {
   const limit = 'limit=10';
   const term = 'term=restaurants';
   const price = 'price=1'
-  const radius = `radius=1609`;
+  const radius = `radius=600`;
   const sort = 'sort_by=rating';
   const open = 'open_now=true';
   const reservation = ''
