@@ -15,9 +15,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Landing />
-        {this.props.restaurantDetails.id && <Details />}
-        {this.props.location.lat && this.props.restaurants.length > 0 && <Main />}
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/main" component={Main} />
+        </Switch>
       </div>
     );
   }
@@ -26,7 +27,8 @@ class App extends Component {
 export const mapStateToProps = state => ({
   location: state.location,
   restaurants: state.restaurants,
-  restaurantDetails: state.restaurantDetails
+  restaurantDetails: state.restaurantDetails,
+  error: state.error
 });
 
 export default withRouter(

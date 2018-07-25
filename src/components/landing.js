@@ -5,12 +5,13 @@ import { locationAction } from '../actions/locationAction';
 import { errorAction } from '../actions/errorAction';
 import { restaurantsAction } from '../actions/restaurantsAction';
 import nearbyRestaurants from './nearbyRestaurants';
+import { withRouter } from 'react-router-dom';
 
 class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      zip_code: "",
+      zip_code: ""
     };
   }
 
@@ -40,6 +41,7 @@ class Landing extends Component {
       this.props.handleLocation(location)
       let restaurants = await nearbyRestaurants(location);
       this.props.handleRestaurants(restaurants)
+      this.props.history.push('/main')
     };
 
     const error = (err) => this.props.handleError(err)
@@ -65,6 +67,7 @@ class Landing extends Component {
           this.props.handleLocation(location)
           let restaurants = await nearbyRestaurants(location);
           this.props.handleRestaurants(restaurants)
+          this.props.history.push('/main')
         }
         return updateStore();
       } else {
@@ -106,4 +109,4 @@ const googleWrapper = GoogleApiWrapper({
   apiKey: 'AIzaSyCY43ng22LgVeBO4LISUvcF7nbMRTaDYPs'
 })(Landing)
 
-export default connect(null, mapDispatchToProps)(googleWrapper)
+export default withRouter(connect(null, mapDispatchToProps)(googleWrapper))

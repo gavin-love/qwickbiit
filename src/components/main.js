@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { detailsAction } from '../actions/detailsAction';
 
@@ -53,7 +54,6 @@ class Main extends Component {
           <p>Rating: {rating}</p>
           <p>Price Range: {price}</p>
           <p>Distance: {miles} miles</p>
-
         </li>
       )
     })
