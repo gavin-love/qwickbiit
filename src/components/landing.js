@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { GoogleApiWrapper } from 'google-maps-react';
 import { connect } from "react-redux";
 import { locationAction } from '../actions/locationAction';
 import { errorAction } from '../actions/errorAction';
@@ -7,13 +7,15 @@ import { restaurantsAction } from '../actions/restaurantsAction';
 import nearbyRestaurants from './nearbyRestaurants';
 import { withRouter } from 'react-router-dom';
 import logo from '../assets/qb-logo.png';
+import loading from '../assets/loading1.png';
 import './landing.css';
 
 class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      zip_code: ""
+      zip_code: "",
+      is_loading: false
     };
   }
 
@@ -26,6 +28,7 @@ class Landing extends Component {
 
   handleCurrentLocation = event => {
     event.preventDefault();
+    this.setState({ is_loading: true })
 
     const options = {
       enableHighAccuracy: true,
@@ -43,6 +46,7 @@ class Landing extends Component {
       this.props.handleLocation(location)
       let restaurants = await nearbyRestaurants(location);
       this.props.handleRestaurants(restaurants)
+      this.setState({ is_loading: false })
       this.props.history.push('/main')
     };
 
@@ -53,6 +57,7 @@ class Landing extends Component {
 
   handleZipCode = event => {
     event.preventDefault();
+    this.setState({ is_loading: true })
     const coder = new this.props.google.maps.Geocoder();
 
     coder.geocode({
@@ -69,6 +74,7 @@ class Landing extends Component {
           this.props.handleLocation(location)
           let restaurants = await nearbyRestaurants(location);
           this.props.handleRestaurants(restaurants)
+          this.setState({ is_loading: false })
           this.props.history.push('/main')
         }
         return updateStore();
@@ -83,6 +89,11 @@ class Landing extends Component {
     return (
       <div className="landing">
         <img className="qb_logo" src={logo} />
+        <form className="price_buttons">
+          <button className="price_button">$</button>
+          <button className="price_button">$$</button>
+          <button className="price_button">$$</button>
+        </form>
         <form className="landing_form" onSubmit={this.handleZipCode} >
           <input
             className="landing_zipcode"
@@ -97,6 +108,7 @@ class Landing extends Component {
         <form className="current_location" onSubmit={this.handleCurrentLocation}>
           <button className="submit_current_location"> current location</button>
         </form>
+        {this.state.is_loading && <img className="loading" src={loading} />}
       </div >
     );
   }

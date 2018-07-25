@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { withRouter, NavLink } from 'react-router-dom';
 
 class Details extends Component {
   constructor(props) {
@@ -14,22 +15,26 @@ class Details extends Component {
       lat,
       lng
     }
-    console.log(userLocation)
-    const { id, name, rating, location, price, transactions, display_phone, distance, review_count, image_url, coordinates } = this.props.restaurantDetails
+
+    const { id, name, rating, location, price, transactions, display_phone, distance, review_count, image_url, coordinates } = this.props.details
+
+    const miles = (distance * 0.000621371).toFixed(2)
 
     return (
       <div className="detail_view">
+        <NavLink to="/main">MAIN</NavLink>
         <div className="detail_view_header">
           <img src={image_url} />
         </div>
         <div className="detail_view_body">
           <h1>{name}</h1>
-          <p>{rating}</p>
-          <p>{location.display_address}</p>
-          <p>{price}</p>
-          <p>{transactions}</p>
+          <p>{location.address1} {location.address2}</p>
+          <p>{location.city}, {location.zip_code}</p>
           <p>{display_phone}</p>
-          <p>{distance}</p>
+          <p>services: {transactions[0]} {transactions[1]} {transactions[2]}</p>
+          <p>price: {price}</p>
+          <p>rating: {rating}</p>
+          <p>distance: {miles} miles</p>
           <Map
             google={this.props.google}
             initialCenter={userLocation}
@@ -53,4 +58,4 @@ const googleWrapper = GoogleApiWrapper({
   apiKey: 'AIzaSyCY43ng22LgVeBO4LISUvcF7nbMRTaDYPs'
 })(Details)
 
-export default connect(mapStateToProps, null)(googleWrapper)
+export default withRouter(connect(mapStateToProps, null)(googleWrapper))
