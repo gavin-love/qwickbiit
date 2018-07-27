@@ -1,6 +1,6 @@
 const errorReducer = (state = {}, action) => {
   switch (action.type) {
-    case "ADD_LOCATION_ERROR":
+    case "ADD_ERROR":
       return action.error;
     default:
       return state;
