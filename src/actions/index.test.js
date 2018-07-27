@@ -56,3 +56,18 @@ describe('detailsAction', () => {
     expect(actual).toEqual(expected)
   })
 })
+
+describe('errorAction', () => {
+  it('should have a type of ADD_ERROR', () => {
+    const error = "what is this"
+
+    const actual = actions.errorAction(error)
+
+    const expected = {
+      type: "ADD_ERROR",
+      error: error
+    }
+
+    expect(actual).toEqual(expected)
+  })
+})
