@@ -38,3 +38,21 @@ describe('restaurantsAction', () => {
   })
 })
 
+describe('detailsAction', () => {
+  it('should have a type of ADD_RESTAURANT_DETAILS', () => {
+
+    const restaurantDetails = {
+      name: 'Sally/s',
+      location: 'John/stown'
+    }
+
+    const actual = actions.detailsAction(restaurantDetails)
+
+    const expected = {
+      type: "ADD_Restaurant_Details",
+      restaurantDetails
+    }
+
+    expect(actual).toEqual(expected)
+  })
+})
