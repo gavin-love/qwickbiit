@@ -100,7 +100,7 @@ class Landing extends Component {
             type="text"
             name="zip_code"
             value={this.state.zipcode}
-            placeholder="Enter zip-code"
+            placeholder="Zip Code"
             onChange={this.handleChange}
           />
           <button className="submit_zipcode">find</button>
