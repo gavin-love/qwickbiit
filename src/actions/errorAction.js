@@ -1,6 +1,6 @@
 export const errorAction = ({ message }) => {
   return {
-    type: "ADD_LOCATION_ERROR",
+    type: "ADD_ERROR",
     error: message
   };
 };
