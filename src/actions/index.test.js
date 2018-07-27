@@ -22,5 +22,19 @@ describe('locationAction', () => {
   })
 })
 
+describe('restaurantsAction', () => {
+  it('should have a type of ADD_RESTAURANTS', () => {
 
+    const restaurants = [{ name: 'Ruby/s' }, { name: 'John/s' }];
+
+    const actual = actions.restaurantsAction(restaurants)
+
+    const expected = {
+      type: "ADD_RESTAURANTS",
+      restaurants: restaurants
+    }
+
+    expect(actual).toEqual(expected)
+  })
+})
 
