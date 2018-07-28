@@ -1,17 +1,20 @@
 import locationReducer from './locationReducer';
 
 describe('describe locationReducer', () => {
-  const initialState = {}
+  it('should return a location object when called with the locationActions', () => {
 
-  const locationAction = {
-    type: "ADD_LOCATION",
-    location: {
-      lat,
-      lng
+    const initialState = {}
+
+    const locationAction = {
+      type: "ADD_LOCATION",
+      location: {
+        lat,
+        lng
+      }
     }
-  }
 
-  const newState = locationReducer(initialState, locationAction)
+    const newState = locationReducer(initialState, locationAction)
 
-  expect(newState).toEqual(locationAction.location)
+    expect(newState).toEqual(locationAction.location)
+  })
 })
