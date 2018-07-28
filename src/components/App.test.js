@@ -30,4 +30,11 @@ describe('mapState', () => {
     const mappedProps = mapStateToProps(mockState);
     expect(mappedProps).toEqual(expected);
   })
+
+  it('should map error to state', () => {
+    const mockState = {}
+    const expected = {}
+    const mappedProps = mapStateToProps(mockState);
+    expect(mappedProps).toEqual(expected);
+  })
 })
