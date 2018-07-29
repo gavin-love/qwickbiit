@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, NavLink } from 'react-router-dom';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { detailsAction } from '../actions/index';
+import { googleApiKey } from '../apiKeys';
 import './main.css';
 
 class Main extends Component {
@@ -103,7 +104,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const googleWrapper = GoogleApiWrapper({
-  apiKey:
+  apiKey: googleApiKey
 })(Main)
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(googleWrapper))
