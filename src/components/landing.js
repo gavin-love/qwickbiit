@@ -13,7 +13,8 @@ class Landing extends Component {
     super(props);
     this.state = {
       zip_code: "",
-      is_loading: false
+      is_loading: false,
+      price: "1"
     };
   }
 
@@ -23,6 +24,14 @@ class Landing extends Component {
       [name]: value
     });
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name } = e.target
+    this.setState({
+      price: name
+    })
+  }
 
   handleCurrentLocation = event => {
     event.preventDefault();
@@ -35,14 +44,17 @@ class Landing extends Component {
     };
 
     const success = async (pos) => {
-      let position = pos.coords;
+      const position = pos.coords;
 
-      let location = {
+      const location = {
         lat: position.latitude,
         lng: position.longitude
       }
+
+      const price = this.state.price
+
       this.props.handleLocation(location)
-      let restaurants = await nearbyRestaurants(location);
+      let restaurants = await nearbyRestaurants(location, price);
       this.props.handleRestaurants(restaurants)
       this.setState({ is_loading: false })
       this.props.history.push('/main')
@@ -68,9 +80,11 @@ class Landing extends Component {
           lng: results[0].geometry.location.lng()
         }
 
+        const price = this.state.price
+
         const updateStore = async () => {
           this.props.handleLocation(location)
-          let restaurants = await nearbyRestaurants(location);
+          const restaurants = await nearbyRestaurants(location, price);
           this.props.handleRestaurants(restaurants)
           this.setState({ is_loading: false })
           this.props.history.push('/main')
@@ -88,9 +102,9 @@ class Landing extends Component {
       <div className="landing">
         <img className="qb_logo" src={logo} alt="qwickbite logo" />
         <form className="price_buttons">
-          <button className="price_button">$</button>
-          <button className="price_button">$$</button>
-          <button className="price_button">$$</button>
+          <button name="1" className="price_button" onClick={this.handleSubmit}>$</button>
+          <button name="2" className="price_button" onClick={this.handleSubmit}>$$</button>
+          <button name="3" className="price_button" onClick={this.handleSubmit}>$$</button>
         </form>
         <form className="landing_form" onSubmit={this.handleZipCode} >
           <input

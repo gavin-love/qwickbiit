@@ -1,4 +1,4 @@
-export const nearbyRestaurants = async (location) => {
+export const nearbyRestaurants = async (location, cost) => {
 
   let restaurants;
 
@@ -11,18 +11,17 @@ export const nearbyRestaurants = async (location) => {
   const long = `longitude=${location.lng}`;
   const limit = 'limit=10';
   const term = 'term=restaurants';
-  const price = 'price=1'
+  const price = `price=${cost}`;
   const radius = `radius=600`;
   const sort = 'sort_by=rating';
   const open = 'open_now=true';
-  const reservation = ''
 
   let headers = new Headers();
   headers.append("Authorization", "Bearer " + yelpApiKey);
 
   try {
     const result =
-      await fetch(`${prefix}${lat}&${long}&${term}&${price}&${limit}&${radius}&${open}&${reservation}&${sort}`,
+      await fetch(`${prefix}${lat}&${long}&${term}&${price}&${limit}&${radius}&${open}&${sort}`,
         {
           headers
         });
