@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { withRouter, NavLink } from 'react-router-dom';
+import { googleApiKey } from '../apiKeys';
 
 class Details extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ export const mapStateToProps = state => ({
 });
 
 const googleWrapper = GoogleApiWrapper({
-  apiKey: 
+  apiKey: googleApiKey
 })(Details)
 
 export default withRouter(connect(mapStateToProps, null)(googleWrapper))
