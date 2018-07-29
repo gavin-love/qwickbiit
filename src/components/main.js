@@ -69,15 +69,14 @@ class Main extends Component {
     })
 
     const style = {
-      width: '100%',
+      width: '98%',
       height: '200px',
+      border: '2px solid rgb(10, 26, 94)',
+      margin: '0 auto'
     }
 
     return (
       <div className="main_view">
-        <div className="main_view_header">
-          <NavLink to="/">Landing</NavLink>
-        </div>
         <Map
           style={style}
           zoom={13}
@@ -89,6 +88,7 @@ class Main extends Component {
         <ul className="main_view_body">
           {restaurantTabs}
         </ul>
+        <NavLink to="/">Landing</NavLink>
       </div>
     )
   }
