@@ -1,4 +1,4 @@
-import yelpApiKey from '../apiKeys';
+import { yelpApiKey } from '../apiKeys';
 
 export const nearbyRestaurants = async (location, cost) => {
 
