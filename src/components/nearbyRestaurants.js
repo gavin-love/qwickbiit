@@ -1,28 +1,26 @@
-export const nearbyRestaurants = async (latitude, longitude) => {
+import { yelpApiKey } from '../apiKeys';
+
+export const nearbyRestaurants = async (location, cost) => {
 
   let restaurants;
-
-
-
   const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
   const prefix = `${corsAnywhereUrl}https://api.yelp.com/v3/businesses/search?`;
 
-  const lat = `latitude=${latitude}`;
-  const long = `longitude=${longitude}`;
+  const lat = `latitude=${location.lat}`;
+  const long = `longitude=${location.lng}`;
   const limit = 'limit=10';
   const term = 'term=restaurants';
-  const price = 'price=1'
-  const radius = `radius=1609`;
+  const price = `price=${cost}`;
+  const radius = `radius=600`;
   const sort = 'sort_by=rating';
   const open = 'open_now=true';
-  const reservation = ''
 
   let headers = new Headers();
   headers.append("Authorization", "Bearer " + yelpApiKey);
 
   try {
     const result =
-      await fetch(`${prefix}${lat}&${long}&${term}&${price}&${limit}&${radius}&${open}&${reservation}&${sort}`,
+      await fetch(`${prefix}${lat}&${long}&${term}&${price}&${limit}&${radius}&${open}&${sort}`,
         {
           headers
         });

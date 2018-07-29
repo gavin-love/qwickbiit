@@ -1,0 +1,53 @@
+.landing {
+  background-color: rgb(10, 26, 94);
+  height: 100vh;
+  padding-top: 50px;
+}
+
+.qb_logo {
+  height: 20%;
+}
+
+.price_buttons {
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center
+}
+
+.price_button {
+  width: 40px;
+  height: 30px;
+}
+
+.landing_form {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.landing_zipcode {
+  width: 65%;
+}
+
+.submit_zipcode {
+  width: 28%;
+}
+
+.current_location {
+  width: 100%;
+}
+
+.submit_current_location {
+  width: 60%;
+}
+
+
+.loading {
+  animation: App-logo-spin infinite 3s linear;
+  height: 10px;
+}
+
+@keyframes loading-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
