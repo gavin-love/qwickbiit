@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper } from 'google-maps-react';
 import { connect } from "react-redux";
-import { locationAction } from '../actions/locationAction';
-import { errorAction } from '../actions/errorAction';
-import { restaurantsAction } from '../actions/restaurantsAction';
+import { locationAction, errorAction, restaurantsAction } from '../actions/index';
 import nearbyRestaurants from './nearbyRestaurants';
 import { withRouter } from 'react-router-dom';
 import logo from '../assets/qb-logo.png';
@@ -88,7 +86,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
-        <img className="qb_logo" src={logo} />
+        <img className="qb_logo" src={logo} alt="qwickbite logo" />
         <form className="price_buttons">
           <button className="price_button">$</button>
           <button className="price_button">$$</button>
@@ -108,7 +106,7 @@ class Landing extends Component {
         <form className="current_location" onSubmit={this.handleCurrentLocation}>
           <button className="submit_current_location"> current location</button>
         </form>
-        {this.state.is_loading && <img className="loading" src={loading} />}
+        {this.state.is_loading && <img className="loading" src={loading} alt="page is loading" />}
       </div >
     );
   }

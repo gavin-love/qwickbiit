@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { withRouter, NavLink } from 'react-router-dom';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import { detailsAction } from '../actions/detailsAction';
+import { detailsAction } from '../actions/index';
 import './main.css';
 
 class Main extends Component {
@@ -42,7 +42,7 @@ class Main extends Component {
     });
 
     const restaurantTabs = this.props.restaurants.map((restaurant, index) => {
-      const { id, name, rating, location, phone, price, transactions, display_phone, distance, review_count, image_url } = restaurant
+      const { id, name, rating, distance, image_url } = restaurant
 
       const miles = (distance * 0.000621371).toFixed(2)
       return (

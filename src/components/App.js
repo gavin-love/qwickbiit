@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import './App.css';
 import Landing from './landing';
 import Main from './main';

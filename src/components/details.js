@@ -16,7 +16,7 @@ class Details extends Component {
       lng
     }
 
-    const { id, name, rating, location, price, transactions, display_phone, distance, review_count, image_url, coordinates } = this.props.details
+    const { name, rating, location, price, transactions, display_phone, distance, image_url, coordinates } = this.props.details
 
     const miles = (distance * 0.000621371).toFixed(2)
 
@@ -24,7 +24,7 @@ class Details extends Component {
       <div className="detail_view">
         <NavLink to="/main">MAIN</NavLink>
         <div className="detail_view_header">
-          <img src={image_url} />
+          <img src={image_url} alt="restaurant" />
         </div>
         <div className="detail_view_body">
           <h1>{name}</h1>
