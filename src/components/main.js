@@ -103,7 +103,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const googleWrapper = GoogleApiWrapper({
-  apiKey: 'AIzaSyCY43ng22LgVeBO4LISUvcF7nbMRTaDYPs'
+  apiKey:
 })(Main)
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(googleWrapper))
