@@ -6,6 +6,7 @@ import nearbyRestaurants from './nearbyRestaurants';
 import { withRouter } from 'react-router-dom';
 import logo from '../assets/qb-logo.png';
 import loading from '../assets/loading1.png';
+import googleApiKey from '../apiKeys';
 import './landing.css';
 
 class Landing extends Component {
@@ -133,7 +134,7 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 const googleWrapper = GoogleApiWrapper({
-  apiKey: 'AIzaSyCY43ng22LgVeBO4LISUvcF7nbMRTaDYPs'
+  apiKey: 
 })(Landing)
 
 export default withRouter(connect(null, mapDispatchToProps)(googleWrapper))
