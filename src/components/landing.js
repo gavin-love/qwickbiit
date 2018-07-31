@@ -86,6 +86,10 @@ class Landing extends Component {
         const updateStore = async () => {
           this.props.handleLocation(location)
           const restaurants = await nearbyRestaurants(location, price);
+
+          if (restaurants === 'err') {
+            this.props.handleError(restaurants)
+          }
           this.props.handleRestaurants(restaurants)
           this.setState({ is_loading: false })
           this.props.history.push('/main')

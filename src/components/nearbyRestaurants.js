@@ -29,8 +29,7 @@ export const nearbyRestaurants = async (location, cost) => {
     restaurants = data.businesses;
     return restaurants;
   } catch (err) {
-
-    return [];
+    return err;
   }
 };
 

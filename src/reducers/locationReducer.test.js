@@ -8,8 +8,8 @@ describe('describe locationReducer', () => {
     const locationAction = {
       type: "ADD_LOCATION",
       location: {
-        lat,
-        lng
+        lat: 56,
+        lng: -56
       }
     }
 
