@@ -1,0 +1,44 @@
+.details_view {
+  height: 100vh;
+  width:  100%;
+  padding: 5px 0;
+  background-color: rgb(10, 26, 94);
+} 
+
+.details_image_container {
+  width: 96%;
+  height: 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+}
+
+.details_view_body {
+  width:  96%;
+  height: 37%;
+  margin: 3px auto;
+  padding-top: 20px;
+  background-color: rgb(104, 159, 205);
+}
+
+.details {
+  width: 90%;
+  margin: 5px auto;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.body {
+  font-size: .8rem;
+}
+
+.rating_values {
+  color: gainsboro;
+}
+
+.out_of {
+  color: rgb(10, 26, 94)
+}

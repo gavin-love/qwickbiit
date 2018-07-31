@@ -70,7 +70,7 @@ class Main extends Component {
 
     const style = {
       width: '98%',
-      height: '40%',
+      height: '200px',
       border: '2px solid rgb(10, 26, 94)',
       margin: '0 auto'
     }

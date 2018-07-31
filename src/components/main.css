@@ -1,16 +1,21 @@
 .main_view {
   height: 100vh;
+  width: 100%;
   background-color: rgb(10, 26, 94);
 }
 
 .main_view_body {
   padding: 0;
   margin: 0;
-  height: 60%;
+  height: 62%;
   width: 100%;
   position: absolute;
-  top: 228px;
-  overflow: scroll
+  top: 200px;
+  overflow-y: scroll
+}
+
+.main_view_body::-webkit-scrollbar { 
+    display: none; 
 }
 
 .list_items {
@@ -18,7 +23,7 @@
   flex-direction: row;
   align-items: center;
   width: 96%;
-  height: 75px;
+  height: 80px;
   border: 2px solid rgb(104, 159, 205);
   background-color: rgb(104, 159, 205);
   margin: 5px auto;

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { googleApiKey } from '../apiKeys';
+import './details.css'
 
 class Details extends Component {
   constructor(props) {
@@ -19,31 +20,45 @@ class Details extends Component {
 
     const { name, rating, location, price, transactions, display_phone, distance, image_url, coordinates } = this.props.details
 
+    console.log(coordinates);
+    console.log(userLocation);
+
     const miles = (distance * 0.000621371).toFixed(2)
+    const style = {
+      width: '96%',
+      height: '28%',
+      border: '2px solid rgb(10, 26, 94)',
+      margin: '0 auto'
+    }
+
+    const restaurantLocation = {
+      lat: coordinates.latitude,
+      lng: coordinates.longitude
+    }
 
     return (
-      <div className="detail_view">
+      <div className="details_view">
+        <div className="details_image_container" style={{ backgroundImage: `url(${image_url})` }}>
+        </div>
+        <div className="details_view_body">
+          <h1 className="details title">{name}</h1>
+          <p className="details body address">{location.address1} {location.address2}</p>
+          <p className="details body location">{location.city}, {location.zip_code}</p>
+          <p className="details body phone">{display_phone}</p>
+          <p className="details body services">services: {transactions[0]} {transactions[1]} {transactions[2]}</p>
+          <p className="details body price">price: <span className="rating_values">{price}</span></p>
+          <p className="details body rating">rating: <span className="rating_values">{rating}</span><span className="out_of"> / </span><span className="rating_values">5</span></p>
+          <p className="details rating">distance: <span className="rating_values">{miles}mi</span></p>
+        </div>
+        <Map
+          style={style}
+          google={this.props.google}
+          initialCenter={userLocation}
+        >
+          <Marker position={userLocation} />
+          <Marker position={restaurantLocation} />
+        </Map>
         <NavLink to="/main">MAIN</NavLink>
-        <div className="detail_view_header">
-          <img src={image_url} alt="restaurant" />
-        </div>
-        <div className="detail_view_body">
-          <h1>{name}</h1>
-          <p>{location.address1} {location.address2}</p>
-          <p>{location.city}, {location.zip_code}</p>
-          <p>{display_phone}</p>
-          <p>services: {transactions[0]} {transactions[1]} {transactions[2]}</p>
-          <p>price: {price}</p>
-          <p>rating: {rating}</p>
-          <p>distance: {miles} miles</p>
-          <Map
-            google={this.props.google}
-            initialCenter={userLocation}
-          >
-            <Marker position={userLocation} />
-            <Marker position={coordinates} />
-          </Map>
-        </div>
       </div>
     )
   }
