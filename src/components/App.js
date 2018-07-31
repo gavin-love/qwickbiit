@@ -24,6 +24,12 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  location: PropTypes.object,
+  restaurants: PropTypes.array,
+  error: PropTypes.object
+}
+
 export const mapStateToProps = state => ({
   location: state.location,
   restaurants: state.restaurants,
@@ -37,9 +43,3 @@ export default withRouter(
     null
   )(App)
 );
-
-App.propTypes = {
-  location: PropTypes.object,
-  restaurants: PropTypes.array,
-  error: PropTypes.string
-}
