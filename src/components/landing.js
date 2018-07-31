@@ -132,6 +132,12 @@ class Landing extends Component {
   }
 }
 
+Landing.propTypes = {
+  handleLocation: PropTypes.func,
+  handleError: PropTypes.func,
+  handleRestaurants: PropTypes.func,
+}
+
 export const mapDispatchToProps = dispatch => ({
   handleLocation: location => dispatch(locationAction(location)),
   handleError: err => dispatch(errorAction(err)),
@@ -144,8 +150,3 @@ const googleWrapper = GoogleApiWrapper({
 
 export default withRouter(connect(null, mapDispatchToProps)(googleWrapper))
 
-Details.propTypes = {
-  handleLocation: PropTypes.func,
-  handleError: PropTypes.func,
-  handleRestaurants: PropTypes.func,
-}

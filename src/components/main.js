@@ -97,7 +97,7 @@ export class Main extends Component {
   }
 }
 
-Details.propTypes = {
+Main.propTypes = {
   location: PropTypes.object,
   restaurants: PropTypes.array,
   handleDetails: PropTypes.func,
