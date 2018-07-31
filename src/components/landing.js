@@ -103,23 +103,23 @@ class Landing extends Component {
       <div className="landing">
         <img className="qb_logo" src={logo} alt="qwickbite logo" />
         <form className="price_buttons">
-          <button name="1" className="price_button" onClick={this.handleSubmit}>$</button>
-          <button name="2" className="price_button" onClick={this.handleSubmit}>$$</button>
-          <button name="3" className="price_button" onClick={this.handleSubmit}>$$</button>
+          <button name="1" className="price_button buttons_default" onClick={this.handleSubmit} autoFocus>$</button>
+          <button name="2" className="price_button buttons_default" onClick={this.handleSubmit}>$$</button>
+          <button name="3" className="price_button buttons_default" onClick={this.handleSubmit}>$$$</button>
         </form>
         <form className="landing_form" onSubmit={this.handleZipCode} >
           <input
-            className="landing_zipcode"
+            className="zipcode"
             type="text"
             name="zip_code"
             value={this.state.zipcode}
             placeholder="Zip Code"
             onChange={this.handleChange}
           />
-          <button className="submit_zipcode">find</button>
+          <button className="find buttons_default">find</button>
         </form>
         <form className="current_location" onSubmit={this.handleCurrentLocation}>
-          <button className="submit_current_location"> current location</button>
+          <button className="submit_current_location buttons_default"> current location</button>
         </form>
         {this.state.is_loading && <img className="loading" src={loading} alt="page is loading" />}
       </div >

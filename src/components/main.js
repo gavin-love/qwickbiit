@@ -60,8 +60,8 @@ class Main extends Component {
               className="list_items_title"
             >{name}</h1>
             <div className="list_items_details">
-              <p className="details">Rating: {rating}/5</p>
-              <p className="details">Distance: {miles}mi</p>
+              <p className="details">rating: <span className="detail_values">{rating}</span><span className="out_of"> / </span><span className="detail_values">5</span></p>
+              <p className="details">distance: <span className="detail_values">{miles}mi</span></p>
             </div>
           </div>
         </li>
@@ -69,15 +69,14 @@ class Main extends Component {
     })
 
     const style = {
-      width: '100%',
+      width: '98%',
       height: '200px',
+      border: '2px solid rgb(10, 26, 94)',
+      margin: '0 auto'
     }
 
     return (
       <div className="main_view">
-        <div className="main_view_header">
-          <NavLink to="/">Landing</NavLink>
-        </div>
         <Map
           style={style}
           zoom={13}
@@ -89,6 +88,7 @@ class Main extends Component {
         <ul className="main_view_body">
           {restaurantTabs}
         </ul>
+        <NavLink to="/">Landing</NavLink>
       </div>
     )
   }
