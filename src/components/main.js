@@ -71,7 +71,7 @@ class Main extends Component {
 
     const style = {
       width: '98%',
-      height: '200px',
+      height: '300px',
       border: '2px solid rgb(10, 26, 94)',
       margin: '0 auto'
     }
@@ -88,8 +88,8 @@ class Main extends Component {
         </Map>
         <ul className="main_view_body">
           {restaurantTabs}
+          <NavLink to="/" className="link_to_home">Home</NavLink>
         </ul>
-        <NavLink to="/">Landing</NavLink>
       </div>
     )
   }

@@ -46,14 +46,17 @@ class Details extends Component {
         <div className="details_view_body">
           <div className="details_image_container" style={{ backgroundImage: `url(${image_url})` }}>
           </div>
-          <h1 className="details title">{name}</h1>
-          <p className="details body address">{location.address1} {location.address2}</p>
-          <p className="details body location">{location.city}, {location.zip_code}</p>
-          <p className="details body phone">{display_phone}</p>
-          <p className="details body price">price: <span className="rating_values">{price}</span></p>
-          <p className="details body rating">rating: <span className="rating_values">{rating}</span><span className="out_of"> / </span><span className="rating_values">5</span></p>
-          <p className="details rating">distance: <span className="rating_values">{miles}mi</span></p>
-          <NavLink to="/main" className="link_to_main">MAIN</NavLink>
+          <div className="details_info_container">
+            <h1 className="details title">{name}</h1>
+            <p className="details body address">{location.address1} {location.address2}</p>
+            <p className="details body location">{location.city}, {location.zip_code}</p>
+            <p className="details body phone">{display_phone}</p>
+            <p className="details body price">price: <span className="rating_values">{price}</span>
+              <span className="out_of"> / </span><span className="rating_values">$$$</span></p>
+            <p className="details body rating">rating: <span className="rating_values">{rating}</span><span className="out_of"> / </span><span className="rating_values">5</span></p>
+            <p className="details rating">distance: <span className="rating_values">{miles}mi</span></p>
+            <NavLink to="/main" className="link_to_main">MAIN</NavLink>
+          </div>
         </div>
       </div>
     )
