@@ -1,23 +1,22 @@
+import { mapDispatchToProps } from "./landing";
 
-// import { mapDispatchToProps } from "./App";
+describe("mapDispatch", () => {
 
-// describe("mapDispatch", () => {
+  it("should call dispatch with correct params for handleRestaurants", () => {
 
-//   it("should call dispatch with correct params for handleRestaurants", () => {
+    const mockDispatch = jest.fn();
 
-//     const mockDispatch = jest.fn();
+    const mappedProps = mapDispatchToProps(mockDispatch);
 
-//     const mappedProps = mapDispatchToProps(mockDispatch);
+    const mockAction = {
+      type: "ADD_RESTAURANTS",
+      restaurants: [{ name: 'john/s' }, { name: 'sally/s' }]
+    };
 
-//     const mockAction = {
-//       type: "ADD_RESTAURANTS",
-//       restaurants: [{ name: 'john/s' }, { name: 'sally/s' }]
-//     };
+    mappedProps.handleRestaurants([{ name: 'john/s' }, { name: 'sally/s' }]);
 
-//     mappedProps.handleRestaurants([{ name: 'john/s' }, { name: 'sally/s' }]);
-
-//     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
-//   });
+    expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+  });
 
 
-// });
+});
