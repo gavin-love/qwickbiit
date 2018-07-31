@@ -64,6 +64,12 @@ class Details extends Component {
   }
 }
 
+Details.propTypes = {
+  location: PropTypes.object,
+  restaurants: PropTypes.array,
+  details: PropTypes.object
+}
+
 export const mapStateToProps = state => ({
   location: state.location,
   restaurants: state.restaurants,
@@ -75,9 +81,3 @@ const googleWrapper = GoogleApiWrapper({
 })(Details)
 
 export default withRouter(connect(mapStateToProps, null)(googleWrapper));
-
-Details.propTypes = {
-  location: PropTypes.object,
-  restaurants: PropTypes.array,
-  details: PropTypes.object
-}
