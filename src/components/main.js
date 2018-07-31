@@ -11,8 +11,8 @@ class Main extends Component {
     super(props);
   }
 
-  getRestaurantDetails = async (id) => {
-    const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === id)
+  getRestaurantDetails = async (props) => {
+    const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === props.id)
     await this.props.handleDetails(restaurant)
     this.props.history.push('/details')
   }
@@ -35,9 +35,11 @@ class Main extends Component {
 
       return (
         <Marker
+          onClick={this.getRestaurantDetails}
           position={center}
           key={index}
           name={restaurant.name}
+          id={restaurant.id}
         />
       );
     });
@@ -51,7 +53,6 @@ class Main extends Component {
           className="list_items"
           key={index}
           id={id}
-          onClick={() => this.getRestaurantDetails(id)}
         >
           <div className="image_container" style={{ backgroundImage: `url(${image_url})` }}>
           </div>

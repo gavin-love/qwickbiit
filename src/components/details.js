@@ -18,15 +18,12 @@ class Details extends Component {
       lng
     }
 
-    const { name, rating, location, price, transactions, display_phone, distance, image_url, coordinates } = this.props.details
-
-    console.log(coordinates);
-    console.log(userLocation);
+    const { name, rating, location, price, display_phone, distance, image_url, coordinates } = this.props.details
 
     const miles = (distance * 0.000621371).toFixed(2)
     const style = {
-      width: '96%',
-      height: '28%',
+      width: '98%',
+      height: '200px',
       border: '2px solid rgb(10, 26, 94)',
       margin: '0 auto'
     }
@@ -37,19 +34,7 @@ class Details extends Component {
     }
 
     return (
-      <div className="details_view">
-        <div className="details_image_container" style={{ backgroundImage: `url(${image_url})` }}>
-        </div>
-        <div className="details_view_body">
-          <h1 className="details title">{name}</h1>
-          <p className="details body address">{location.address1} {location.address2}</p>
-          <p className="details body location">{location.city}, {location.zip_code}</p>
-          <p className="details body phone">{display_phone}</p>
-          <p className="details body services">services: {transactions[0]} {transactions[1]} {transactions[2]}</p>
-          <p className="details body price">price: <span className="rating_values">{price}</span></p>
-          <p className="details body rating">rating: <span className="rating_values">{rating}</span><span className="out_of"> / </span><span className="rating_values">5</span></p>
-          <p className="details rating">distance: <span className="rating_values">{miles}mi</span></p>
-        </div>
+      <div className="details_container">
         <Map
           style={style}
           google={this.props.google}
@@ -58,7 +43,18 @@ class Details extends Component {
           <Marker position={userLocation} />
           <Marker position={restaurantLocation} />
         </Map>
-        <NavLink to="/main">MAIN</NavLink>
+        <div className="details_view_body">
+          <div className="details_image_container" style={{ backgroundImage: `url(${image_url})` }}>
+          </div>
+          <h1 className="details title">{name}</h1>
+          <p className="details body address">{location.address1} {location.address2}</p>
+          <p className="details body location">{location.city}, {location.zip_code}</p>
+          <p className="details body phone">{display_phone}</p>
+          <p className="details body price">price: <span className="rating_values">{price}</span></p>
+          <p className="details body rating">rating: <span className="rating_values">{rating}</span><span className="out_of"> / </span><span className="rating_values">5</span></p>
+          <p className="details rating">distance: <span className="rating_values">{miles}mi</span></p>
+          <NavLink to="/main" className="link_to_main">MAIN</NavLink>
+        </div>
       </div>
     )
   }

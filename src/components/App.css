@@ -5,6 +5,7 @@
   box-sizing: border-box;
   border: none;
   outline: none;
+  background-color: rgb(10, 26, 94);
 }
 
 .App-logo {
