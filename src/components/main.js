@@ -5,14 +5,16 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { detailsAction } from '../actions/index';
 import { googleApiKey } from '../apiKeys';
 import './main.css';
+import PropTypes from 'prop-types';
 
-class Main extends Component {
+export class Main extends Component {
   constructor(props) {
     super(props);
   }
 
-  getRestaurantDetails = async (id) => {
-    const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === id)
+  getRestaurantDetails = async (props) => {
+    const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === props.id)
+    console.log(restaurant)
     await this.props.handleDetails(restaurant)
     this.props.history.push('/details')
   }
@@ -35,9 +37,11 @@ class Main extends Component {
 
       return (
         <Marker
+          onClick={this.getRestaurantDetails}
           position={center}
           key={index}
           name={restaurant.name}
+          id={restaurant.id}
         />
       );
     });
@@ -51,7 +55,6 @@ class Main extends Component {
           className="list_items"
           key={index}
           id={id}
-          onClick={() => this.getRestaurantDetails(id)}
         >
           <div className="image_container" style={{ backgroundImage: `url(${image_url})` }}>
           </div>
@@ -70,7 +73,7 @@ class Main extends Component {
 
     const style = {
       width: '98%',
-      height: '200px',
+      height: '300px',
       border: '2px solid rgb(10, 26, 94)',
       margin: '0 auto'
     }
@@ -87,11 +90,17 @@ class Main extends Component {
         </Map>
         <ul className="main_view_body">
           {restaurantTabs}
+          <NavLink to="/" className="link_to_home">Home</NavLink>
         </ul>
-        <NavLink to="/">Landing</NavLink>
       </div>
     )
   }
+}
+
+Main.propTypes = {
+  location: PropTypes.object,
+  restaurants: PropTypes.array,
+  handleDetails: PropTypes.func,
 }
 
 export const mapStateToProps = state => ({
@@ -99,7 +108,7 @@ export const mapStateToProps = state => ({
   restaurants: state.restaurants
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleDetails: (restaurant) => dispatch(detailsAction(restaurant))
 })
 
@@ -107,7 +116,8 @@ const googleWrapper = GoogleApiWrapper({
   apiKey: googleApiKey
 })(Main)
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(googleWrapper))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(googleWrapper));
+
 
 
 

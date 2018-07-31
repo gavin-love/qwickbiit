@@ -8,6 +8,7 @@ import logo from '../assets/qb-logo.png';
 import loading from '../assets/loading1.png';
 import { googleApiKey } from '../apiKeys';
 import './landing.css';
+import PropTypes from 'prop-types'
 
 class Landing extends Component {
   constructor(props) {
@@ -86,6 +87,10 @@ class Landing extends Component {
         const updateStore = async () => {
           this.props.handleLocation(location)
           const restaurants = await nearbyRestaurants(location, price);
+
+          if (restaurants === 'err') {
+            this.props.handleError(restaurants)
+          }
           this.props.handleRestaurants(restaurants)
           this.setState({ is_loading: false })
           this.props.history.push('/main')
@@ -127,6 +132,12 @@ class Landing extends Component {
   }
 }
 
+Landing.propTypes = {
+  handleLocation: PropTypes.func,
+  handleError: PropTypes.func,
+  handleRestaurants: PropTypes.func,
+}
+
 export const mapDispatchToProps = dispatch => ({
   handleLocation: location => dispatch(locationAction(location)),
   handleError: err => dispatch(errorAction(err)),
@@ -138,3 +149,4 @@ const googleWrapper = GoogleApiWrapper({
 })(Landing)
 
 export default withRouter(connect(null, mapDispatchToProps)(googleWrapper))
+

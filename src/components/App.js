@@ -5,6 +5,7 @@ import './App.css';
 import Landing from './landing';
 import Main from './main';
 import Details from './details';
+import PropTypes from 'prop-types'
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,12 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  location: PropTypes.object,
+  restaurants: PropTypes.array,
+  error: PropTypes.object
 }
 
 export const mapStateToProps = state => ({

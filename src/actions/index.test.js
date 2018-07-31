@@ -49,7 +49,7 @@ describe('detailsAction', () => {
     const actual = actions.detailsAction(restaurantDetails)
 
     const expected = {
-      type: "ADD_Restaurant_Details",
+      type: "ADD_RESTAURANT_DETAILS",
       restaurantDetails
     }
 
@@ -59,13 +59,15 @@ describe('detailsAction', () => {
 
 describe('errorAction', () => {
   it('should have a type of ADD_ERROR', () => {
-    const error = "what is this"
+    const error = {
+      message: "what is this"
+    }
 
     const actual = actions.errorAction(error)
 
     const expected = {
-      type: "ADD_ERROR",
-      error: error
+      type: "ADD_LOCATION_ERROR",
+      error: error.message
     }
 
     expect(actual).toEqual(expected)

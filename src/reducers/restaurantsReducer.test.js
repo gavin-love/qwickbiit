@@ -6,7 +6,7 @@ describe('restaurantsReducer', () => {
 
     const restaurantsAction = {
       type: "ADD_RESTAURANTS",
-      restaurants: restaurants
+      restaurants: [{ name: 'happy' }, { name: 'yppah' }]
     }
 
     const newState = restaurantsReducer(initialState, restaurantsAction);
