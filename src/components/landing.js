@@ -8,6 +8,7 @@ import logo from '../assets/qb-logo.png';
 import loading from '../assets/loading1.png';
 import { googleApiKey } from '../apiKeys';
 import './landing.css';
+import PropTypes from 'prop-types'
 
 class Landing extends Component {
   constructor(props) {
@@ -142,3 +143,9 @@ const googleWrapper = GoogleApiWrapper({
 })(Landing)
 
 export default withRouter(connect(null, mapDispatchToProps)(googleWrapper))
+
+Details.propTypes = {
+  handleLocation: PropTypes.func,
+  handleError: PropTypes.func,
+  handleRestaurants: PropTypes.func,
+}
