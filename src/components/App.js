@@ -5,6 +5,7 @@ import './App.css';
 import Landing from './landing';
 import Main from './main';
 import Details from './details';
+import PropTypes from 'prop-types'
 
 class App extends Component {
   constructor(props) {
@@ -36,3 +37,9 @@ export default withRouter(
     null
   )(App)
 );
+
+App.propTypes = {
+  location: PropTypes.object,
+  restaurants: PropTypes.array,
+  error: PropTypes.string
+}
