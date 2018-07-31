@@ -30,3 +30,24 @@ describe('mapState', () => {
     expect(mappedProps).toEqual(expected);
   })
 })
+
+describe("mapDispatch", () => {
+
+  it("should call dispatch with correct params for handleDetails", () => {
+
+    const mockDispatch = jest.fn();
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+
+    const mockAction = {
+      type: "ADD_RESTAURANT_DETAILS",
+      restaurantDetails: { name: "Casper" }
+    };
+
+    mappedProps.handleDetails({
+      name: "Casper"
+    });
+
+    expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+  });
+});

@@ -100,7 +100,7 @@ export const mapStateToProps = state => ({
   restaurants: state.restaurants
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleDetails: (restaurant) => dispatch(detailsAction(restaurant))
 })
 
