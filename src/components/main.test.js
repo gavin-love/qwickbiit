@@ -1,4 +1,23 @@
-import { mapDispatchToProps, mapStateToProps } from './main';
+import { Main, mapDispatchToProps, mapStateToProps } from './main';
+import { shallow } from "enzyme";
+import React from "react";
+
+describe('App', () => {
+  it('should call getRestaurantDetails with the correct params', () => {
+    const mockHandleDetails = jest.fn();
+    const mockHistory = [];
+    const mockLocation = { lat: 40, lng: -40 }
+    const mockLatitude = 40
+    const mockLongitude = -40
+    const mockRestaurant = { name: "Holly", coordinates: { latitude: mockLatitude, longitude: mockLongitude } }
+    const mockRestaurants = [{ mockRestaurant }]
+
+    const wrapper = shallow(<Main handleDetails={mockHandleDetails} history={mockHistory} location={mockLocation} restaurants={mockRestaurants} />)
+    wrapper.instance().getRestaurantDetails(mockLocation, 1)
+
+    expect(handleDetails).toHaveBeenCalledWith(mockRestaurant)
+  })
+})
 
 describe('mapState', () => {
 

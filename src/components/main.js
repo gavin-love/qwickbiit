@@ -6,13 +6,14 @@ import { detailsAction } from '../actions/index';
 import { googleApiKey } from '../apiKeys';
 import './main.css';
 
-class Main extends Component {
+export class Main extends Component {
   constructor(props) {
     super(props);
   }
 
   getRestaurantDetails = async (props) => {
     const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === props.id)
+    console.log(restaurant)
     await this.props.handleDetails(restaurant)
     this.props.history.push('/details')
   }
