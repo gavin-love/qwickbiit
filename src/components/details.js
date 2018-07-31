@@ -4,6 +4,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { googleApiKey } from '../apiKeys';
 import './details.css'
+import PropTypes from 'prop-types'
 
 class Details extends Component {
   constructor(props) {
@@ -73,4 +74,10 @@ const googleWrapper = GoogleApiWrapper({
   apiKey: googleApiKey
 })(Details)
 
-export default withRouter(connect(mapStateToProps, null)(googleWrapper))
+export default withRouter(connect(mapStateToProps, null)(googleWrapper));
+
+Details.propTypes = {
+  location: PropTypes.object,
+  restaurants: PropTypes.array,
+  details: PropTypes.object
+}
