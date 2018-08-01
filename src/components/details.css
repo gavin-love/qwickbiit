@@ -91,7 +91,16 @@
 }
 
 @media only screen and (min-width: 800px) {
+  .details_container {
+    display: flex;
+    flex-direction: row;
+  }
   .details_view_body  {
     flex-direction: column;
+    position: absolute;
+    top: 5px;
+    left: 51.5%;
+    width: 47.5%;
+    height: 100%;
   }
 }
