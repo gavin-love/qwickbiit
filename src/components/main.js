@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { withRouter, NavLink } from 'react-router-dom';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { detailsAction } from '../actions/index';
 import { googleApiKey } from '../apiKeys';
 import './main.css';
@@ -14,7 +14,6 @@ export class Main extends Component {
 
   getRestaurantDetails = async (props) => {
     const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === props.id)
-    console.log(restaurant)
     await this.props.handleDetails(restaurant)
     this.props.history.push('/details')
   }

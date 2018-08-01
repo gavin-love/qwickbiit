@@ -27,7 +27,6 @@ export const nearbyRestaurants = async (location, cost) => {
 
     const data = await result.json();
     restaurants = data.businesses;
-    console.log(restaurants);
     return restaurants;
   } catch (err) {
     return err;

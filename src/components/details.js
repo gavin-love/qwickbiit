@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { googleApiKey } from '../apiKeys';
+import person from '../assets/person.png';
 import './details.css'
 import PropTypes from 'prop-types'
 
@@ -34,6 +35,11 @@ class Details extends Component {
       lng: coordinates.longitude
     }
 
+    const icon = {
+      url: person,
+      anchor: new this.props.google.maps.Point(32, 32),
+      scaledSize: new this.props.google.maps.Size(64, 64)
+    }
     return (
       <div className="details_container">
         <Map
@@ -41,7 +47,7 @@ class Details extends Component {
           google={this.props.google}
           initialCenter={userLocation}
         >
-          <Marker position={userLocation} />
+          <Marker position={userLocation} icon={icon} />
           <Marker position={restaurantLocation} />
         </Map>
         <div className="details_view_body">
