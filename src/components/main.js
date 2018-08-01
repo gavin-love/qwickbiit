@@ -70,17 +70,19 @@ export class Main extends Component {
       )
     })
 
-    const style = {
+    const mobileMap = {
       width: '98%',
       height: '250px',
       border: '2px solid rgb(10, 26, 94)',
       margin: '0 auto'
     }
 
+    let width = window.innerWidth
+
     return (
       <div className="main_view">
         <Map
-          style={style}
+          style={mobileMap}
           zoom={13}
           google={this.props.google}
           initialCenter={location}

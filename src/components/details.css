@@ -68,8 +68,30 @@
     border: 2px solid white;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 500px) {
+  .details_view_body {
+    display: flex;
+    flex-direction: row;
+    height: 49%;
+    top: 405px;
+  }
+  .details_image_container {
+    height: 100%;
+  }
   .details_info_container {
-    background-color: pink;
+    height: 100%;
+  }
+  .link_to_main {
+    width: 40%;
+    font-size: 1.5rem;
+  }
+  .title {
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .details_view_body  {
+    flex-direction: column;
   }
 }
