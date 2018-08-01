@@ -12,10 +12,16 @@ export class Main extends Component {
     super(props);
   }
 
-  getRestaurantDetails = async (props) => {
-    const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === props.id)
-    await this.props.handleDetails(restaurant)
-    this.props.history.push('/details')
+  getRestaurantDetails = async (props, id) => {
+    if (props) {
+      const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === props.id)
+      await this.props.handleDetails(restaurant)
+      this.props.history.push('/details')
+    } else if (id) {
+      const restaurant = await this.props.restaurants.find(restaurant => restaurant.id === id)
+      await this.props.handleDetails(restaurant)
+      this.props.history.push('/details')
+    }
   }
 
   render() {
@@ -54,6 +60,7 @@ export class Main extends Component {
           className="list_items"
           key={index}
           id={id}
+          onClick={() => this.getRestaurantDetails(undefined, id)}
         >
           <div className="image_container" style={{ backgroundImage: `url(${image_url})` }}>
           </div>
@@ -70,29 +77,80 @@ export class Main extends Component {
       )
     })
 
-    const style = {
+    const mobileMap = {
       width: '98%',
-      height: '300px',
+      height: '250px',
       border: '2px solid rgb(10, 26, 94)',
       margin: '0 auto'
     }
+    const tabletMap = {
+      width: '98%',
+      height: '400px',
+      border: '2px solid rgb(10, 26, 94)',
+      margin: '0 auto'
+    }
+    const computerMap = {
+      width: '50%',
+      height: '99%',
+      border: '2px solid rgb(10, 26, 94)',
+      margin: '0',
+      top: '3px',
+    }
 
-    return (
-      <div className="main_view">
-        <Map
-          style={style}
-          zoom={13}
-          google={this.props.google}
-          initialCenter={location}
-        >
-          {markers}
-        </Map>
-        <ul className="main_view_body">
-          {restaurantTabs}
-          <NavLink to="/" className="link_to_home">Home</NavLink>
-        </ul>
-      </div>
-    )
+    let width = window.innerWidth
+
+    if (width < 500) {
+      return (
+        <div className="main_view">
+          <Map
+            style={mobileMap}
+            zoom={13}
+            google={this.props.google}
+            initialCenter={location}
+          >
+            {markers}
+          </Map>
+          <ul className="main_view_body">
+            {restaurantTabs}
+            <NavLink to="/" className="link_to_home">Home</NavLink>
+          </ul>
+        </div>
+      )
+    } else if (width >= 500 && width < 800) {
+      return (
+        <div className="main_view">
+          <Map
+            style={tabletMap}
+            zoom={13}
+            google={this.props.google}
+            initialCenter={location}
+          >
+            {markers}
+          </Map>
+          <ul className="main_view_body">
+            {restaurantTabs}
+            <NavLink to="/" className="link_to_home">Home</NavLink>
+          </ul>
+        </div>
+      )
+    } else {
+      return (
+        <div className="main_view">
+          <Map
+            style={computerMap}
+            zoom={13}
+            google={this.props.google}
+            initialCenter={location}
+          >
+            {markers}
+          </Map>
+          <ul className="main_view_body">
+            {restaurantTabs}
+            <NavLink to="/" className="link_to_home">Home</NavLink>
+          </ul>
+        </div>
+      )
+    }
   }
 }
 

@@ -71,7 +71,7 @@
 }
 
 .current_location {
-  width: 80%;
+  width: 76%;
   margin: 0 auto;
 }
 
@@ -89,4 +89,43 @@
 @keyframes loading-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media only screen and (min-width: 500px) {
+  .qb_logo {
+    height: 35%;
+  }
+
+  .price_button {
+    width: 60px;
+    height: 50px;
+  }
+
+  .find {
+    height: 36px;
+  }
+
+  .zipcode {
+    height: 30px;
+  }
+
+  .submit_current_location {
+    height: 40px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .qb_logo {
+    height: 40%;
+  }
+
+  .landing_form {
+    width: 65%;
+    max-width: 75%;
+  }
+
+  .current_location {
+    width: 62%;
+    max-width: 72%;
+  }
 }
