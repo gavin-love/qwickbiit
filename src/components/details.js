@@ -43,11 +43,10 @@ class Details extends Component {
     }
     const computerMap = {
       width: '50%',
-      height: '100%',
+      height: '99%',
       border: '2px solid rgb(10, 26, 94)',
-      margin: '0 auto',
+      margin: '0',
       top: '3px',
-      left: '-49%'
     }
 
     let width = window.innerWidth
@@ -81,7 +80,8 @@ class Details extends Component {
           </div>
         </div>
       )
-    } else if (width > 500 && width < 800) {
+    } else if (width >= 500 && width <= 800) {
+      console.log(width)
       return (
         <div className="details_container">
           <Map
@@ -109,7 +109,8 @@ class Details extends Component {
           </div>
         </div>
       )
-    } else if (width > 800 & width < 1440) {
+    } else {
+      console.log(width)
       return (
         <div className="details_container">
           <Map
@@ -138,8 +139,6 @@ class Details extends Component {
         </div>
       )
     }
-
-
   }
 }
 

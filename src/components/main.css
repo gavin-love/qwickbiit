@@ -72,7 +72,6 @@
   background-position: center;
 }
 
-
 .link_to_home {
   text-decoration: none;
   text-decoration: none;
@@ -84,4 +83,45 @@
   margin: 10px auto;
   color: white;
   border: 2px solid white;
+}
+
+@media only screen and (min-width: 500px) {
+  .main_view_body {
+    height: 49%;
+    top: 403px;
+  }
+
+  .image_container {
+    height: 100px;
+  }
+
+  .list_items {
+    height: 100px
+  }
+
+  .list_items_title {
+    font-size: 1.2rem;
+  }
+
+  .details {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .main_view_body  {
+    position: absolute;
+    top: 5px;
+    left: 51.5%;
+    width: 47.5%;
+    height: 99%;
+  }
+
+  .list_items {
+    height: 120px;
+  }
+
+  .image_container {
+    height: 120px;
+  }
 }

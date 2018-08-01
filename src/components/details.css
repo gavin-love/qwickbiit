@@ -7,7 +7,7 @@
 
 .details_image_container {
   width: 100%;
-  height: 46%;
+  height: 40%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -86,7 +86,7 @@
     font-size: 1.5rem;
   }
   .title {
-    margin-top: 50px;
+    margin: 25px auto;
   }
 }
 
@@ -101,6 +101,6 @@
     top: 5px;
     left: 51.5%;
     width: 47.5%;
-    height: 100%;
+    height: 99%;
   }
 }
