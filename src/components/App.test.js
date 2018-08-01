@@ -1,8 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { mapDispatchToProps, mapStateToProps } from "./App";
-
+import { mapStateToProps } from "./App";
 
 describe('mapState', () => {
   it('should map location to state', () => {
