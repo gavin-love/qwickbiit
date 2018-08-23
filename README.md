@@ -2,7 +2,7 @@
 
 <!-- ![Login Page](./src/Assets/LandingPage.png) -->
 
-# Movie-Tracker
+# Qwickbiit
 
 Qwickbiit is an app designed to save the user time when looking to find something to eat quickly. It has functionality that allows the user to select a price range an enter location either by zipcode or geo-loaction. The app provides 10 establishments within a half-mile radius based on top ratings. The main goal of this project was to make fast and simple to find a place to eat when you are short on time or don't know anything about the area and need to eat now. 
 
