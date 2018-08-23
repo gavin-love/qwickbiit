@@ -12,10 +12,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Clone the repositorys (git clone https://github.com/gavin-love/MovieTracker.git) & (git clone https://github.com/turingschool-examples/movie-tracker).
-
+Clone the repository (git clone https://github.com/gavin-love/qwickbiit.git)
 run npm install
-then run npm start
+run npm start
 
 ## Running the tests
 
