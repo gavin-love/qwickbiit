@@ -1,4 +1,6 @@
-<!-- ![Opening Page](qwickbiit/Screen Shot 2018-09-06 at 5.53.10 PM.png) -->
+![Login](./src/Assets/login.png)
+![Landing](./src/Assets/landing.png)
+[Details](./src/Assets/details.png)
 
 # Qwickbiit
 
