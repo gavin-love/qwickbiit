@@ -1,6 +1,6 @@
-![Login](./src/Assets/login.png)
-![Landing](./src/Assets/landing.png)
-[Details](./src/Assets/details.png)
+![Login](./src/assets/login.png)
+![Landing](./src/assets/landing.png)
+[Details](./src/assets/details.png)
 
 # Qwickbiit
 
